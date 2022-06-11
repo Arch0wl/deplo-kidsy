@@ -1,6 +1,8 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import UploadIm from "../src/components/UploadImages/UploadIm";
+import Gallery from "./components/UploadImages/Gellery";
+// import Menubar from "./components/common/MenuBar";
 // import { useState, useEffect } from "react";
 // import { storage } from "./firebase";
 // import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
@@ -8,9 +10,11 @@ import UploadIm from "../src/components/UploadImages/UploadIm";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <UploadIm />
-    </div>
+      <Gallery kidId="h0X9JLF98v2wfZGlCA71" />
+      {/* <Menubar /> */}
+    </>
   );
 }
 
