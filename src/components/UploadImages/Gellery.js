@@ -7,7 +7,6 @@ export default function Gallery({ kidId }) {
   const [craftworks, setCraftworks] = useState();
 
   useEffect(() => {
-    //fetch kid by id
     console.log(kidId);
     fetch(`http://localhost:5000/kids/${kidId}`)
       .then((response) => response.json())
@@ -24,10 +23,10 @@ export default function Gallery({ kidId }) {
       {!craftworks ? (
         <h2>Loading...</h2>
       ) : (
-        craftworks.map(
-          (craftwork) => console.log(craftwork)
-          //   <img src={craftwork.url} key={craftwork.id} />
-        )
+        craftworks.map((craftwork) => (
+          // console.log(craftwork)
+          <img src={craftwork.image} key={craftwork.id} />
+        ))
       )}
     </section>
   );
