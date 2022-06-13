@@ -1,9 +1,14 @@
-import { Modal } from "@material-ui/core";
+// import { Modal } from "@material-ui/core";
 import React from "react";
 // import "./App.css";
 import UploadIm from "../src/components/UploadImages/UploadIm";
 import Gallery from "./components/UploadImages/Gellery";
-import ImageGrid from "./components/UploadImages/ImageGrid";
+// import { Routes, Route } from "react-router-dom";
+// import Footer from "./components/common/Footer";
+
+// import Hero from "./components/Home/Hero";
+
+// import ImageGrid from "./components/UploadImages/ImageGrid";
 // import Menubar from "./components/common/MenuBar";
 
 // import { useState, useEffect } from "react";
@@ -14,17 +19,17 @@ import ImageGrid from "./components/UploadImages/ImageGrid";
 function App() {
   return (
     <>
+      {/* <Menubar /> */}
+      {/* <Routes> */}
+      {/* <Route path="/craftworks/:kidId" element={<UploadIm />} /> */}
       <UploadIm />
       <Gallery />
-      <ImageGrid />
-      <Modal />
-      {/* <Menubar /> */}
+      {/* <Hero /> */}
+      {/* <Footer /> */}
+
+      {/* </Routes> */}
     </>
   );
 }
 
 export default App;
-
-{
-  /* <Gallery kidId="h0X9JLF98v2wfZGlCA71" /> */
-}

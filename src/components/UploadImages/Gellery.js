@@ -8,9 +8,9 @@ export default function Gallery({ kidId }) {
 
   useEffect(() => {
     console.log(kidId);
-    fetch(`http://localhost:5000/kids/${kidId}`)
+    fetch(`https://deploy-kidsy-api-fb.web.app/craftworks/${kidId}`)
       .then((response) => response.json())
-      .then((data) => setCraftworks(data.craftworks))
+      .then((data) => setCraftworks(data.data))
       .catch(console.error);
   }, [kidId]);
 
@@ -31,3 +31,5 @@ export default function Gallery({ kidId }) {
     </section>
   );
 }
+
+// https://deploy-kidsy-api-fb.web.app//craftworks/${kidId}
