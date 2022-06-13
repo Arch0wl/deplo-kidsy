@@ -10,25 +10,30 @@ function UploadIm() {
 
   const uploadImage = () => {
     if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    const filename = imageUpload.name + v4();
+    const imageRef = ref(storage, `images/${filename}`);
+    console.log(imageRef);
     uploadBytes(imageRef, imageUpload).then((snaphsot) => {
-      getDownloadURL(snaphsot.ref).then((url) => {
-        const data = {
-          title: "some title",
-          image: url,
-        };
-        alert("upload successful");
-        fetch(
-          "https://deploy-kidsy-api-fb.web.app/craftworks/h0X9JLF98v2wfZGlCA71",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+      console.log(snaphsot);
+      const url = `https://firebasestorage.googleapis.com/v0/b/deploy-kidsy-api-fb.appspot.com/o/images%2F${filename}?alt=media`;
+      console.log(url);
+      const data = {
+        title: "some title",
+        image: url,
+      };
+      // alert("upload successful");
+      fetch(
+        "https://deploy-kidsy-api-fb.web.app/craftworks/h0X9JLF98v2wfZGlCA71",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-            body: JSON.stringify(data),
-          }
-        );
+          body: JSON.stringify(data),
+        }
+      ).then(() => {
+        window.location.reload(false);
       });
     });
   };

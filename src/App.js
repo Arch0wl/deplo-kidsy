@@ -23,7 +23,7 @@ function App() {
       {/* <Routes> */}
       {/* <Route path="/craftworks/:kidId" element={<UploadIm />} /> */}
       <UploadIm />
-      <Gallery />
+      <Gallery kidId={"h0X9JLF98v2wfZGlCA71"} />
       {/* <Hero /> */}
       {/* <Footer /> */}
 
