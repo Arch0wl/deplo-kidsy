@@ -1,53 +1,69 @@
-// import { Modal } from "@material-ui/core";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navlink,
+} from "react-router-dom";
 import React from "react";
+import { createContext, useEffect, useState } from "react";
 import { ImageUploadContextProvider } from "./context/ImageUploadContext";
 // import "./App.css";
-// import UploadIm from "../src/components/UploadImages/UploadIm";
-// import Gallery from "./components/UploadImages/Gallery";
-// import { Routes, Route } from "react-router-dom";
-// import Footer from "./components/common/Footer";
-// import { blue, teal } from "@mui/material/colors";
-import Layout from "./components/Home/Layout.js";
+import { createTheme } from "@material-ui/core";
+import { blue, teal } from "@mui/material/colors";
+import Home from "./pages/Home";
+import { Dashboard } from "@material-ui/icons";
 
-// import Hero from "./components/Home/Hero";
-// import Menubar from "./components/common/MenuBar";
-// import { createTheme } from "@material-ui/core";
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: blue[600],
+    },
+    secondary: {
+      main: teal[400],
+    },
+    buttonTextcolor: {
+      main: teal[400],
+    },
+  },
+});
 
-// import ImageGrid from "./components/UploadImages/ImageGrid";
-// import MenuBarOther from "./components/common/MenuBarOther";
-
-// const theme = createTheme({
-//   palette: {
-//     mode: "light",
-//     primary: {
-//       main: blue[600],
-//     },
-//     secondary: {
-//       main: teal[400],
-//     },
-//     buttonTextcolor: {
-//       main: teal[400],
-//     },
-//   },
-// });
+export const UserContext = createContext(null);
 
 function App() {
+  const [user, setUser] = useState(null);
+  // const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
+
+  // useEffect (() => {
+  //   if (jwt !== null) {
+  //     fetch(`${process.env.REACT_APP_API_URL}/getUser`,
+  //       { headers: {Authorization: jwt}}
+  //       )
+  //       .then((apiResponse) => {
+  //         if ((apiResponse.status === 403) || (apiResponse.status === 500) )
+  //           {
+  //             localStorage.removeItem("jwt")
+  //             return
+  //           }
+  //         return apiResponse.json()
+  //       })
+  //       .then(setUser)
+  //       .catch(alert);
+  //   }
+  // }, [])
+
   return (
-    <>
-      <ImageUploadContextProvider>
-        {/* <Menubar /> */}
-        <Layout />
+    <UserContext.Provider value={{ user, setUser }}>
+      <Router>
 
-        {/* <Routes> */}
-        {/* <Route path="/craftworks/:kidId" element={<UploadIm />} /> */}
-        {/* <UploadIm />
-        <Gallery kidId={"h0X9JLF98v2wfZGlCA71"} /> */}
+        <Route path ='/login'
+        element={!loggedUser ?  <Login /> : <KidProfile?>} />
+        <Route exact path = '/' element={<Home />}
+      
 
-        {/* <Hero /> */}
-        {/* <Footer /> */}
-        {/* </Routes> */}
-      </ImageUploadContextProvider>
-    </>
+      <ImageUploadContextProvider>{/* <Home /> */}</ImageUploadContextProvider>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
