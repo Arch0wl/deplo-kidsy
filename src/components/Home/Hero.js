@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "@mui/material/Button";
+
 import "./hero.css";
+const heroImage = new URL("../../assets/heroImage.jpeg", import.meta.url);
 
 export default function Hero() {
   const handleGetStarted = () => {
@@ -15,8 +17,10 @@ export default function Hero() {
           <button onClick={handleGetStarted} className="button">
             Get started
           </button>
-          {/* <div className="mainimage"></div> */}
         </div>
+      </div>
+      <div>
+        <img src={heroImage} alt="Nature" class="responsive" />
       </div>
     </div>
   );

@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { ImageUploadContext } from "../../context/ImageUploadContext";
+
 // import { useParams } from "react-router-dom";
 
 // import { getImages } from "../../firebase";
 
 export default function Gallery({ kidId }) {
+  // const { imageUpload } = useContext(ImageUploadContext);
   const [craftworks, setCraftworks] = useState();
 
   useEffect(() => {
-    // console.log(kidId);
+    // console.log(kidId);c
     fetch(`https://deploy-kidsy-api-fb.web.app/kids/${kidId}`)
       .then((response) => response.json())
       .then((data) => setCraftworks(data))
       .catch(console.error);
-  }, [kidId]);
+  }, []);
 
   // useEffect(() => {
   //   console.log(craftworks);

@@ -1,12 +1,12 @@
-// import "../";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ImageUploadContext } from "../../context/ImageUploadContext";
 
 import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid"; // uuuid library for different files types
 
 function UploadIm() {
-  const [imageUpload, setImageUpload] = useState(null);
+  const { imageUpload, setImageUpload } = useContext(ImageUploadContext);
 
   const uploadImage = () => {
     if (imageUpload == null) return;

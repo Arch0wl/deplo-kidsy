@@ -1,33 +1,52 @@
 // import { Modal } from "@material-ui/core";
 import React from "react";
+import { ImageUploadContextProvider } from "./context/ImageUploadContext";
 // import "./App.css";
-import UploadIm from "../src/components/UploadImages/UploadIm";
-import Gallery from "./components/UploadImages/Gellery";
+// import UploadIm from "../src/components/UploadImages/UploadIm";
+// import Gallery from "./components/UploadImages/Gallery";
 // import { Routes, Route } from "react-router-dom";
 // import Footer from "./components/common/Footer";
+// import { blue, teal } from "@mui/material/colors";
+import Layout from "./components/Home/Layout.js";
 
 // import Hero from "./components/Home/Hero";
+// import Menubar from "./components/common/MenuBar";
+// import { createTheme } from "@material-ui/core";
 
 // import ImageGrid from "./components/UploadImages/ImageGrid";
-// import Menubar from "./components/common/MenuBar";
+// import MenuBarOther from "./components/common/MenuBarOther";
 
-// import { useState, useEffect } from "react";
-// import { storage } from "./firebase";
-// import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
-// import { v4 } from "uuid"; // uuuid library for different files types
+// const theme = createTheme({
+//   palette: {
+//     mode: "light",
+//     primary: {
+//       main: blue[600],
+//     },
+//     secondary: {
+//       main: teal[400],
+//     },
+//     buttonTextcolor: {
+//       main: teal[400],
+//     },
+//   },
+// });
 
 function App() {
   return (
     <>
-      {/* <Menubar /> */}
-      {/* <Routes> */}
-      {/* <Route path="/craftworks/:kidId" element={<UploadIm />} /> */}
-      <UploadIm />
-      <Gallery kidId={"h0X9JLF98v2wfZGlCA71"} />
-      {/* <Hero /> */}
-      {/* <Footer /> */}
+      <ImageUploadContextProvider>
+        {/* <Menubar /> */}
+        <Layout />
 
-      {/* </Routes> */}
+        {/* <Routes> */}
+        {/* <Route path="/craftworks/:kidId" element={<UploadIm />} /> */}
+        {/* <UploadIm />
+        <Gallery kidId={"h0X9JLF98v2wfZGlCA71"} /> */}
+
+        {/* <Hero /> */}
+        {/* <Footer /> */}
+        {/* </Routes> */}
+      </ImageUploadContextProvider>
     </>
   );
 }
