@@ -25,11 +25,20 @@ export default function Gallery({ kidId }) {
     <section style={{ margin: "60px" }}>
       {!craftworks || craftworks.length === 0 ? (
         <h2>Loading...</h2>
-      ) : (
+      ) : craftworks.craftworks ? (
         craftworks.craftworks.map((craftwork) => (
           // console.log(craftwork)
-          <img src={craftwork.image} alt={craftwork.title} key={craftwork.id} />
+          <>
+            <img
+              src={craftwork.image}
+              alt={craftwork.title}
+              key={craftwork.id}
+            />
+            <h3>{craftwork.title}</h3>
+          </>
         ))
+      ) : (
+        <h2> No craftworks yet</h2>
       )}
     </section>
   );

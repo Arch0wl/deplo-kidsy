@@ -1,15 +1,16 @@
-import { initializeApp } from "firebase/app";
+import firebase, { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBk3pjeowT8fYZUSInpuw4BENKRsvIESFs",
-  authDomain: "deploy-kidsy-api-fb.firebaseapp.com",
-  projectId: "deploy-kidsy-api-fb",
-  storageBucket: "deploy-kidsy-api-fb.appspot.com",
-  messagingSenderId: "1093709318281",
-  appId: "1:1093709318281:web:d7bc836fc9304bbee2de58",
+  apiKey: "AIzaSyDnOSWqzZjBgdjnhY8AD9IVRiF1HiyRnQo",
+  authDomain: "kidsy-a512e.firebaseapp.com",
+  projectId: "kidsy-a512e",
+  storageBucket: "kidsy-a512e.appspot.com",
+  messagingSenderId: "104773125573",
+  appId: "1:104773125573:web:ccbe6babd660c274c077ac",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const auth = firebase.auth();
 export const storage = getStorage(app);

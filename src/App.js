@@ -1,19 +1,37 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navlink,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import React from "react";
-import { createContext, useEffect, useState } from "react";
-import { ImageUploadContextProvider } from "./context/ImageUploadContext";
+import { createContext, useState } from "react";
+import { useEffect } from "react";
+// import { Dashboard } from "./pages/Dashboard"; // can we name our page with gallery ????
+import SignUp from "./pages/SignUp";
+import LogIn from "./pages/LogIn";
+import { initializeApp } from "firebase/app";
+// import Dashboard from "./pages/Dashboard";
+
 // import "./App.css";
-import { createTheme } from "@material-ui/core";
+import { createTheme, ThemeProvider } from "@material-ui/core";
 import { blue, teal } from "@mui/material/colors";
+// import SignUpForm from "./components/SignUpForm";
 import Home from "./pages/Home";
-import { Dashboard } from "@material-ui/icons";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDnOSWqzZjBgdjnhY8AD9IVRiF1HiyRnQo",
+  authDomain: "kidsy-a512e.firebaseapp.com",
+  projectId: "kidsy-a512e",
+  storageBucket: "kidsy-a512e.appspot.com",
+  messagingSenderId: "104773125573",
+  appId: "1:104773125573:web:ccbe6babd660c274c077ac",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const theme = createTheme({
+  typography: {
+    fontFamily: `'Noto Sans', sans-serif`,
+    fontWeightRegular: 400,
+  },
   palette: {
     mode: "light",
     primary: {
@@ -28,40 +46,34 @@ const theme = createTheme({
   },
 });
 
-export const UserContext = createContext(null);
+export const UserContext = createContext();
 
 function App() {
   const [user, setUser] = useState(null);
   // const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
+  const [userId] = useState("kqyrKD7IfTeSSBr2jMbW");
 
-  // useEffect (() => {
-  //   if (jwt !== null) {
-  //     fetch(`${process.env.REACT_APP_API_URL}/getUser`,
-  //       { headers: {Authorization: jwt}}
-  //       )
-  //       .then((apiResponse) => {
-  //         if ((apiResponse.status === 403) || (apiResponse.status === 500) )
-  //           {
-  //             localStorage.removeItem("jwt")
-  //             return
-  //           }
-  //         return apiResponse.json()
-  //       })
-  //       .then(setUser)
-  //       .catch(alert);
-  //   }
-  // }, [])
+  useEffect(() => {
+    fetch(`https://deploy-kidsy-api-fb.web.app/users/${userId}`)
+      .then((apiResponse) => {
+        return apiResponse.json();
+      })
+      .then(setUser)
+      .catch(alert);
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
-
-        <Route path ='/login'
-        element={!loggedUser ?  <Login /> : <KidProfile?>} />
-        <Route exact path = '/' element={<Home />}
-      
-
-      <ImageUploadContextProvider>{/* <Home /> */}</ImageUploadContextProvider>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/" element={<Home />} />
+            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          </Routes>
+          {/* <SignUpForm /> */}
+        </ThemeProvider>
       </Router>
     </UserContext.Provider>
   );

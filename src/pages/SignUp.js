@@ -1,19 +1,15 @@
 import React from "react";
 import Menubar from "../components/common/MenuBar";
-import Hero from "../components/Home/Hero";
-import SignUp from "./SignUp";
-import Layout from "../components/Home/Layout";
+import SignUpForm from "../components/SignUpForm";
 import Footer from "../components/common/Footer";
 
-function Home() {
+function SignUp() {
   return (
     <>
       <Menubar />
-      <Hero />
-      <Layout />
+      <SignUpForm />
       <Footer />
     </>
   );
 }
-
-export default Home;
+export default SignUp;

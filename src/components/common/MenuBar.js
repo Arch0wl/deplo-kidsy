@@ -3,8 +3,18 @@ import { AppBar, IconButton, Typography } from "@mui/material";
 // import { useNavigate } from "react-router-dom";
 import { Toolbar, Box } from "@material-ui/core";
 
+import { useNavigate } from "react-router-dom";
+
 export default function Menubar() {
-  //   const navigate = useNavigate;
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    navigate("/signup");
+  };
+
+  const handleLogIn = () => {
+    navigate("/login");
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -20,11 +30,11 @@ export default function Menubar() {
           ></IconButton>
           <Typography variant="h6">Kidsy</Typography>
           <Box mr={5}>
-            <Button color="inherit" variant="outlined">
+            <Button color="inherit" variant="outlined" onClick={handleLogIn}>
               Log In
             </Button>
           </Box>
-          <Button color="secondary" variant="contained">
+          <Button color="secondary" variant="contained" onClick={handleSignUp}>
             Sign Up
           </Button>
         </Toolbar>
