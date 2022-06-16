@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import * as firebase from "firebase";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -7,10 +6,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
-// import { UserContext } from "../App";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-// import { auth } from "../firebase";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 export default function SignUpForm() {
   let navigate = useNavigate();
@@ -25,8 +22,6 @@ export default function SignUpForm() {
     const resp = await createUserWithEmailAndPassword(auth, email, password);
     return resp.user;
   };
-
-  // const { setUser } = useContext(UserContext);
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -89,8 +84,6 @@ export default function SignUpForm() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                // value={password}
-                // onChange={(e) => setPassword(e.target.value)}
                 onChange={(e) => setForm({ ...form, password: e.target.value })}
               />
               <Button
