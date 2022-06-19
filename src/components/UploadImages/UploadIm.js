@@ -1,36 +1,38 @@
-import { useEffect, useState } from "react";
-import { ImageUploadContext } from "../../context/ImageUploadContext";
-
-import { storage } from "../../firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useState } from "react";
+import { storage } from "../../firebase/firebase";
+import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid"; // uuuid library for different files types
 
-function UploadIm({ kidId }) {
+function UploadIm() {
   const [imageUpload, setImageUpload] = useState(null);
-  const [title, setTitle] = useState(null);
 
   const uploadImage = () => {
+    console.log(imageUpload);
     if (imageUpload == null) return;
     const filename = imageUpload.name + v4();
     const imageRef = ref(storage, `images/${filename}`);
     console.log(imageRef);
+
     uploadBytes(imageRef, imageUpload).then((snaphsot) => {
       console.log(snaphsot);
-      const url = `https://firebasestorage.googleapis.com/v0/b/deploy-kidsy-api-fb.appspot.com/o/images%2F${filename}?alt=media`;
+      const url = `https://firebasestorage.googleapis.com/v0/b/kidsy-a512e.appspot.com/o/images%2F${filename}?alt=media`;
       console.log(url);
       const data = {
-        title: title,
+        title: "some title",
         image: url,
       };
       // alert("upload successful");
-      fetch(`https://deploy-kidsy-api-fb.web.app/craftworks/${kidId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      fetch(
+        "https://deploy-kidsy-api-fb.web.app/craftworks/2UGYmzyxrZOzLpr87hQ0",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-        body: JSON.stringify(data),
-      }).then(() => {
+          body: JSON.stringify(data),
+        }
+      ).then(() => {
         window.location.reload(false);
       });
     });
@@ -44,14 +46,8 @@ function UploadIm({ kidId }) {
           setImageUpload(event.target.files[0]);
         }}
       />
-      <input
-        name="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
       <button onClick={uploadImage}>Upload Image</button>
     </div>
   );
 }
-
 export default UploadIm;

@@ -25,7 +25,7 @@ function Dashboard() {
           setKidId(data[0].kidId);
           setKidFirstName(data[0].firstName);
           setKidLastName(data[0].lastName);
-          setKidLastName(data[0].dateOfBirth);
+          setKidDateOfBirth(data[0].dateOfBirth);
         })
         .catch(console.error)
         .finally(() => setLoaded(true));
@@ -37,7 +37,7 @@ function Dashboard() {
       {/* <Menubar /> */}
       {kidId ? (
         <>
-          <UploadIm kidId={kidId} />
+          <UploadIm />
           <Gallery kidId={kidId} />
           <ShowKid kidId={kidId} />
         </>

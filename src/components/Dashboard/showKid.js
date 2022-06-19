@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -13,7 +12,6 @@ function ShowKid() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-
   const { user } = useContext(UserContext);
 
   function handleShowKid() {

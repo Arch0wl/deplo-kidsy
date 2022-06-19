@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -9,6 +10,15 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDnOSWqzZjBgdjnhY8AD9IVRiF1HiyRnQo",
+//   authDomain: "kidsy-a512e.firebaseapp.com",
+//   projectId: "kidsy-a512e",
+//   storageBucket: "kidsy-a512e.appspot.com",
+//   messagingSenderId: "104773125573",
+//   appId: "1:104773125573:web:ccbe6babd660c274c077ac",
+// };
+
 export default function SignUpForm() {
   let navigate = useNavigate();
   const [form, setForm] = useState({
@@ -17,6 +27,7 @@ export default function SignUpForm() {
     password: "",
   });
   const auth = getAuth();
+  // const app = initializeApp(firebaseConfig);
 
   const createUserWithFirebase = async ({ email, password }) => {
     const resp = await createUserWithEmailAndPassword(auth, email, password);
