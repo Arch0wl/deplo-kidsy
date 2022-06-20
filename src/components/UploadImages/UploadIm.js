@@ -3,7 +3,7 @@ import { storage } from "../../firebase/firebase";
 import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid"; // uuuid library for different files types
 
-function UploadIm() {
+function UploadIm({ kidId }) {
   const [imageUpload, setImageUpload] = useState(null);
 
   const uploadImage = () => {
@@ -22,17 +22,14 @@ function UploadIm() {
         image: url,
       };
       // alert("upload successful");
-      fetch(
-        "https://deploy-kidsy-api-fb.web.app/craftworks/2UGYmzyxrZOzLpr87hQ0",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+      fetch(`https://deploy-kidsy-api-fb.web.app/craftworks/${kidId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-          body: JSON.stringify(data),
-        }
-      ).then(() => {
+        body: JSON.stringify(data),
+      }).then(() => {
         window.location.reload(false);
       });
     });

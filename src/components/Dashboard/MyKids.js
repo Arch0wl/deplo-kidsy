@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MyKids({ userId }) {
   const [kids, setKids] = useState(null);
 
   useEffect(() => {
+    console.log(`this is my current user id ${userId}`);
     fetch(`https://deploy-kidsy-api-fb.web.app/kids/user/${userId}`, {
       method: "GET",
       headers: {
@@ -18,15 +20,24 @@ function MyKids({ userId }) {
       .catch(console.error);
   }, [userId]);
 
+  const navigate = useNavigate();
+
+  const handleKidGallery = (event, key) => {
+    console.log(event.target.id);
+    console.log(key);
+    navigate(`/kidgallery/${event.target.id}`);
+  };
+
   return (
     <div>
       {!kids || kids.length === 0 ? (
-        <h2>Loading...</h2>
+        <h2>...</h2>
       ) : kids ? (
         kids.map((kid) => (
-          // console.log(craftwork)
           <>
-            <h3>{kid.firstName}</h3>
+            <button id={kid.kidId} onClick={handleKidGallery} key={kid.kidId}>
+              {kid.firstName}
+            </button>
           </>
         ))
       ) : (

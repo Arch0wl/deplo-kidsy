@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { blue, teal } from "@mui/material/colors";
 import Home from "./pages/Home";
+import KidGallery from "./pages/KidGallery";
 
 const theme = createTheme({
   typography: {
@@ -59,6 +60,7 @@ function App() {
               <Route path="/login" element={<LogIn />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/kidgallery/:kidId" element={<KidGallery />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </ThemeProvider>

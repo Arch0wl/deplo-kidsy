@@ -12,7 +12,7 @@ export default function Gallery({ kidId }) {
       .then((response) => response.json())
       .then((data) => setCraftworks(data))
       .catch(console.error);
-  }, []);
+  }, [kidId]);
 
   // useEffect(() => {
   //   console.log(craftworks);
