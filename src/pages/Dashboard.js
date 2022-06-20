@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-// import Menubar from "../components/common/MenuBar";
+import Menubar from "../components/common/MenuBar";
 import UploadIm from "../components/UploadImages/UploadIm";
 import Gallery from "../components/UploadImages/Gallery";
 import Footer from "../components/common/Footer";
@@ -8,6 +8,7 @@ import AddKid from "../components/Dashboard/AddKid";
 import { useEffect } from "react";
 import { UserContext } from "../App";
 import ShowKid from "../components/Dashboard/showKid";
+import MyKids from "../components/Dashboard/MyKids";
 
 function Dashboard() {
   const [kidId, setKidId] = useState(null);
@@ -37,9 +38,11 @@ function Dashboard() {
       {/* <Menubar /> */}
       {kidId ? (
         <>
+          <Menubar />
           <UploadIm />
           <Gallery kidId={kidId} />
           <ShowKid kidId={kidId} />
+          <MyKids userId={user.id} />
         </>
       ) : loaded ? (
         <AddKid />

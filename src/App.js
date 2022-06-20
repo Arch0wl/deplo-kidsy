@@ -10,7 +10,6 @@ import LogIn from "./pages/LogIn";
 import Dashboard from "./pages/Dashboard";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { blue, teal } from "@mui/material/colors";
-
 import Home from "./pages/Home";
 
 const theme = createTheme({
@@ -59,8 +58,8 @@ function App() {
             <Routes>
               <Route path="/login" element={<LogIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Home />} />
             </Routes>
           </ThemeProvider>
         </Router>

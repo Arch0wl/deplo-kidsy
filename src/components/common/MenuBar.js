@@ -20,21 +20,36 @@ export default function Menubar() {
         position="fixed"
         style={{ background: "blue", color: "aliceblue" }}
       >
-        <Toolbar>
-          <IconButton
+        <Toolbar style={{ display: "flex", alignContent: "flex-end" }}>
+          {/* <IconButton
             edge="start"
-            color="inherit"
+            color="primary"
             aria-label="menu"
-          ></IconButton>
-          <Typography variant="h6">Kidsy</Typography>
+          ></IconButton> */}
+          <Typography
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+            variant="h6"
+          >
+            Kidsy
+          </Typography>
           <Box mr={5}>
             <Button color="inherit" variant="outlined" onClick={handleLogIn}>
               Log In
             </Button>
+
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={handleSignUp}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+            >
+              Sign Up
+            </Button>
           </Box>
-          <Button color="secondary" variant="contained" onClick={handleSignUp}>
-            Sign Up
-          </Button>
         </Toolbar>
       </AppBar>
     </Box>

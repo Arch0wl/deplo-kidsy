@@ -39,7 +39,7 @@ function UploadIm() {
   };
 
   return (
-    <div className="App">
+    <div style={{ paddingTop: "100px" }}>
       <input
         type="file"
         onChange={(event) => {

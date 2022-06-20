@@ -9,10 +9,11 @@ import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { SettingsSuggestRounded } from "@mui/icons-material";
 
 export default function LogInForm() {
   let navigate = useNavigate();
-  const [form, setForm] = useState({
+  const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
@@ -26,12 +27,31 @@ export default function LogInForm() {
 
   const handleLogIn = async (e) => {
     e.preventDefault();
-    await signInWithFirebase(form)
-      .then((response) => {
-        navigate("/dashboard");
+    fetch("https://deploy-kidsy-api-fb.web.app/users/userId", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const { email, password } = data;
+        if (signInWithEmailAndPassword(email, password)) {
+          SettingsSuggestRounded({ ...user, data });
+        }
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => console.log(err));
   };
+
+  // const handleLogIn = async (e) => {
+  //   e.preventDefault();
+  //   await signInWithFirebase(form)
+  //     .then((response) => {
+  //       navigate("/dashboard");
+  //     })
+  //     .catch((err) => alert(err.message));
+  // };
 
   return (
     <>
@@ -59,7 +79,7 @@ export default function LogInForm() {
                 name="name"
                 autoComplete="name"
                 autoFocus
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
               />
               <TextField
                 margin="normal"
@@ -70,7 +90,7 @@ export default function LogInForm() {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
               <TextField
                 margin="normal"
@@ -81,14 +101,15 @@ export default function LogInForm() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
               <Button
+                onClick={() => navigate("/dashboard")}
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={handleLogIn}
+                // onClick={handleLogIn}
               >
                 Submit
               </Button>

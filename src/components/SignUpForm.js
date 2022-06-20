@@ -39,7 +39,7 @@ export default function SignUpForm() {
           setUser({ ...user, data });
         }
       })
-      .then(() => navigate("/dashboard"))
+      // .then(() => navigate("/dashboard"))
       .catch((err) => console.log(err));
   };
 
@@ -109,6 +109,8 @@ export default function SignUpForm() {
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
               <Button
+                // onClick={handleSignup}
+                onClick={() => navigate("/dashboard")}
                 type="submit"
                 fullWidth
                 variant="contained"

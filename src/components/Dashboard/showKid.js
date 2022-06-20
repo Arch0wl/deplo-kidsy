@@ -15,18 +15,13 @@ function ShowKid() {
   const { user } = useContext(UserContext);
 
   function handleShowKid() {
-    const kidObj = {
-      firstName: firstName,
-      lastName: lastName,
-      dateOfBirth: dateOfBirth,
-      userId: user.id,
-    };
-    fetch(`https://deploy-kidsy-api-fb.web.app/kids/kidId`, {
+    fetch(`https://deploy-kidsy-api-fb.web.app/kids/user/${user.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(kidObj),
+    }).then((data) => {
+      console.log(data);
     });
   }
   return (

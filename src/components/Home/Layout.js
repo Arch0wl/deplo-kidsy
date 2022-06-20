@@ -3,6 +3,8 @@ import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Card, CardActionArea, CardMedia, CardContent } from "@mui/material/";
 
+// const getready = new URL()
+
 const Layout = () => {
   return (
     <div class="responsive">
@@ -13,7 +15,7 @@ const Layout = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+                image="https://images.squarespace-cdn.com/content/v1/5373b147e4b0e5824b359a50/1442918169496-1JBE5FSGHZQ2M5FR2MBK/How+to+Photography+Kid%27s+Artwork?format=1500w"
                 alt="green iguana"
               />
               <CardContent>
@@ -37,7 +39,7 @@ const Layout = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+                image="https://artfulparent.com/wp-content/uploads/2016/01/kids-art-poster-featured-image.png"
                 alt="green iguana"
               />
               <CardContent>
@@ -62,7 +64,7 @@ const Layout = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+                image="https://imgc.allpostersimages.com/img/posters/spring_u-L-F93DJP0.jpg"
                 alt="green iguana"
               />
               <CardContent>
@@ -88,16 +90,15 @@ const Layout = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+                image="https://ctl.s6img.com/society6/img/FePYhp_gU7VJh8cl71ixC10Zw50/w_700/posters/top/~artwork,fw_2718,fh_3618,fy_-3,iw_2718,ih_3623/s6-original-art-uploads/society6/uploads/misc/e1e5ab84982144f7b2e5705a78dcb797/~~/poa-positive-art-print-inspirational-80s-memphis-retro-typography-happy-kids-posters.jpg?wait=0&attempt=0"
                 alt="green iguana"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  Lizard
+                  Text
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  Some text
                 </Typography>
               </CardContent>
             </CardActionArea>
