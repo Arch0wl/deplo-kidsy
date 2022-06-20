@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -10,24 +9,14 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDnOSWqzZjBgdjnhY8AD9IVRiF1HiyRnQo",
-//   authDomain: "kidsy-a512e.firebaseapp.com",
-//   projectId: "kidsy-a512e",
-//   storageBucket: "kidsy-a512e.appspot.com",
-//   messagingSenderId: "104773125573",
-//   appId: "1:104773125573:web:ccbe6babd660c274c077ac",
-// };
-
 export default function SignUpForm() {
   let navigate = useNavigate();
-  const [form, setForm] = useState({
+  const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
   });
   const auth = getAuth();
-  // const app = initializeApp(firebaseConfig);
 
   const createUserWithFirebase = async ({ email, password }) => {
     const resp = await createUserWithEmailAndPassword(auth, email, password);
@@ -36,12 +25,34 @@ export default function SignUpForm() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    await createUserWithFirebase(form)
-      .then((response) => {
-        navigate("/dashboard");
+    fetch("https://deploy-kidsy-api-fb.web.app/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const { email, password } = data;
+        if (createUserWithFirebase(email, password)) {
+          setUser({ ...user, data });
+        }
       })
-      .catch((err) => alert(err.message));
+      .then(() => navigate("/dashboard"))
+      .catch((err) => console.log(err));
   };
+
+  // const handleSignup = async (e) => {
+  //   e.preventDefault();
+  //   fetch(`https://deploy-kidsy-api-fb.web.app/users`);
+  //   await createUserWithFirebase(form)
+  //     .then((response) => {
+  //       // hit your API with response.user
+  //       navigate("/dashboard");
+  //     })
+  //     .catch((err) => alert(err.message));
+  // };
 
   return (
     <>
@@ -71,7 +82,7 @@ export default function SignUpForm() {
                 autoFocus
                 // value={name}
                 // onChange={(e) => setName(e.target.value)}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
               />
               <TextField
                 margin="normal"
@@ -84,7 +95,7 @@ export default function SignUpForm() {
                 autoFocus
                 // value={email}
                 // onChange={(e) => setEmail(e.target.value)}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
               <TextField
                 margin="normal"
@@ -95,7 +106,7 @@ export default function SignUpForm() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
               <Button
                 type="submit"
