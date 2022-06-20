@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="textCell">
           <p className="textHeader">Save kids' Art and enjoy them later </p>
           <button onClick={handleGetStarted} className="button">
-            Get started
+            GET STARTED
           </button>
         </div>
       </div>
