@@ -5,8 +5,10 @@
   align-items: center;
   align-self: flex-end;
   background-color: #787373;
-  bottom: 0px;
+
   justify-content: center;
-  bottom: 0px;
   color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }

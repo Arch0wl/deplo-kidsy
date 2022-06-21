@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import { AppBar, IconButton, Typography } from "@mui/material";
+import { AppBar, Typography } from "@mui/material";
 import { Toolbar, Box } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,10 @@ export default function Menubar() {
     navigate("/login");
   };
 
+  const handleLogOut = () => {
+    navigate("/");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -21,11 +25,6 @@ export default function Menubar() {
         style={{ background: "blue", color: "aliceblue" }}
       >
         <Toolbar style={{ display: "flex", alignContent: "flex-end" }}>
-          {/* <IconButton
-            edge="start"
-            color="primary"
-            aria-label="menu"
-          ></IconButton> */}
           <Typography
             onClick={() => navigate("/")}
             style={{ cursor: "pointer" }}
@@ -49,6 +48,9 @@ export default function Menubar() {
             >
               Sign Up
             </Button>
+            {/* <Button color="inherit" variant="outlined" onClick={handleLogOut}>
+              Log Out
+            </Button> */}
           </Box>
         </Toolbar>
       </AppBar>

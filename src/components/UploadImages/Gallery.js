@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import "./gallery.css";
+// import { Masonry } from "react-masonry-component";
 // import { useContext } from "react";
 // import { ImageUploadContext } from "../../context/ImageUploadContext";
 
@@ -26,12 +28,16 @@ export default function Gallery({ kidId }) {
         craftworks.craftworks.map((craftwork) => (
           // console.log(craftwork)
           <>
+            {/* <Masonry> */}
             <img
+              div
+              className="img"
               src={craftwork.image}
               alt={craftwork.title}
               key={craftwork.id}
             />
-            <h3>{craftwork.title}</h3>
+            {/* <h3>{craftwork.title}</h3> */}
+            {/* </Masonry> */}
           </>
         ))
       ) : (

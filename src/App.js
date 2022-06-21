@@ -21,7 +21,7 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: blue[600],
+      main: blue[400],
     },
     secondary: {
       main: teal[400],

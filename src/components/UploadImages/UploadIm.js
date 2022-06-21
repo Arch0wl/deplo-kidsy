@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { storage } from "../../firebase/firebase";
+import "./UploadIm.css";
 import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid"; // uuuid library for different files types
 

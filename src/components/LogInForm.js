@@ -60,10 +60,11 @@ export default function LogInForm() {
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 20,
+              marginTop: 60,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              backgroundColor: "grey",
             }}
           >
             <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
